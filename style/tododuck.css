@@ -1,0 +1,223 @@
+.user-text {
+	color: #757575;
+	font-size: 16px;
+	margin-top: -24px;
+	margin-bottom: -20px;
+}
+.page-content {
+	position: relative;
+	height: 100%;
+	padding: 5px;
+}
+
+
+.card-task.mdl-card {
+	width: 100%;
+	min-height: 96px;	/* needed because defined 200 by default */
+	height: 96px;
+	background: #009688;
+	margin-bottom: 8px;
+}
+.card-task > .mdl-card__actions {
+	border-color: rgba(255, 255, 255, 0.2);
+}
+.card-task > .mdl-card__title {
+	align-items: flex-start;
+}
+.card-task > .mdl-card__title > h4 {
+	margin-top: 0;
+}
+.card-task > .mdl-card__actions {
+	display: flex;
+	box-sizing: border-box;
+	align-items: center;
+}
+.card-task > .mdl-card__title,
+.card-task > .mdl-card__actions,
+.card-task > .mdl-card__actions > .mdl-button {
+	color: #fff;
+}
+
+.task-content {
+	white-space: nowrap;
+	overflow-x: auto;
+	overflow-y: hidden;
+}
+.urgency-holder{
+	width: 20px;
+	height: 20px;
+	
+	border-style: solid;
+	border-color: #ffffff;
+	border-width: 2px;
+	border-radius: 15px;
+	margin-right: 2px;
+	
+	text-align: center;
+	font-size: 19px;
+	
+	background-color: #827717;
+}
+.date-warning {
+	margin-right: 8px !important;
+}
+.date-holder {
+	font-size: 14px;
+}
+
+#empty-task {
+	display: none;
+}
+#completed-task {
+	display: none;
+}
+
+/* add task FAB */
+#add-task {
+	position: fixed;
+	right: 30px;
+	bottom: 30px;
+	padding: 12px;
+	z-index: 5;
+}
+
+/*
+ * Task editor
+ */
+#task-editor-overlay {
+	margin: 0px auto;
+	width: 100%;
+	height: 100%;
+	z-index: 10;
+	position: absolute;
+	background-color: #000;
+	opacity: 0.6;
+}
+#task-editor.mdl-card {
+	margin: 0px auto;
+	width: 320px;
+	height: 355px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	z-index: 15;
+	transform: translate(-50%, -50%);
+}
+#task-editor > .mdl-card__title {
+	color: #fff;
+	background-color: #009688;
+}
+#task-editor > .mdl-card__actions {
+	display: flex;
+}
+.task-text-holder {
+	margin-top: -24px;
+}
+#task-text {
+	
+}
+.deadline-holder {
+	margin-top: -24px;
+}
+.place-holder {
+	margin-top: -24px;
+}
+#priority-slider {
+	
+}
+.category-button {
+	
+}
+#editing-index {
+	display: none;
+}
+
+/* Header menu button edits. Needed because div is prototyped & can't be edited without JS */
+.mdl-layout__drawer-button > .material-icons {
+	visibility: hidden;	/* get rid of the MENU text */
+}
+.mdl-layout__drawer-button {	/* entire icon code */
+	background-position: 0 -96px;
+	background-repeat: no-repeat;
+	background-image: url(../assets/svg-sprite.svg);
+	width: 24px;
+	height: 24px;
+	margin: 16px !important;	/* ignored unless important */
+}
+
+/*
+ *  svg sprite position handling
+ */
+.svg-ic_done_24px {
+	background-position: 0 0;
+	background-repeat: no-repeat;
+	background-image: url(../assets/svg-sprite.svg);
+}
+
+.svg-ic_check_circle_24px {
+	background-position: 0 -24px;
+	background-repeat: no-repeat;
+	background-image: url(../assets/svg-sprite.svg);
+}
+
+.svg-ic_settings_24px {
+	background-position: 0 -48px;
+	background-repeat: no-repeat;
+	background-image: url(../assets/svg-sprite.svg);
+}
+
+.svg-ic_arrow_back_24px {
+	background-position: 0 -72px;
+	background-repeat: no-repeat;
+	background-image: url(../assets/svg-sprite.svg);
+}
+
+.svg-ic_search_24px {
+	background-position: 0 -120px;
+	background-repeat: no-repeat;
+	background-image: url(../assets/svg-sprite.svg);
+}
+
+.svg-ic_time_24px {
+	background-position: 0 -144px;
+	background-repeat: no-repeat;
+	background-image: url(../assets/svg-sprite.svg);
+}
+
+.svg-ic_warning_24px {
+	background-position: 0 -168px;
+	background-repeat: no-repeat;
+	background-image: url(../assets/svg-sprite.svg);
+}
+
+.svg-ic_place_24px {
+	background-position: 0 -192px;
+	background-repeat: no-repeat;
+	background-image: url(../assets/svg-sprite.svg);
+}
+
+.svg-ic_add_24px {
+	background-position: 0 -216px;
+	background-repeat: no-repeat;
+	background-image: url(../assets/svg-sprite.svg);
+}
+
+.svg-ic_close_24px {
+	background-position: 0 -240px;
+	background-repeat: no-repeat;
+	background-image: url(../assets/svg-sprite.svg);
+}
+
+/*
+ * svg sprite size & margin handling
+ */
+.svg-ic_done_24px-dims { width: 24px; height: 24px; margin: 4px; }
+.svg-ic_check_circle_24px-dims { width: 24px; height: 24px; margin: 4px; }
+.svg-ic_settings_24px-dims { width: 24px; height: 24px; margin: 4px; }
+.svg-ic_arrow_back_24px-dims { width: 24px; height: 24px; margin: 4px; }
+.svg-ic_search_24px-dims { width: 24px; height: 24px; margin: 4px; }
+.svg-ic_time_24px-dims { width: 24px; height: 24px; margin: 4px; }
+.svg-ic_warning_24px-dims { width: 24px; height: 24px; margin: 4px; }
+.svg-ic_place_24px-dims { width: 24px; height: 24px; margin: 4px; }
+.svg-ic_add_24px-dims { width: 24px; height: 24px; margin: 4px; }
+.svg-ic_close_24px-dims { width: 24px; height: 24px; margin: 4px; }

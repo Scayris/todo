@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<title>ToDoDuck</title>
+		<link rel="shortcut icon" href="assets/Logo.ico" />
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="./style/material.min.css" type="text/css">
+		<link rel="stylesheet" href="./style/tododuck.css" type="text/css">
+		<script src="./scripts/jquery-2.1.4.min.js" type="text/javascript"></script>
+		<script src="./scripts/material.min.js" type="text/javascript"></script>
+		<script src="./scripts/tododuck.js" type="text/javascript"></script>
+	</head>
+	<body>
+		<div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer
+					mdl-layout--fixed-header">
+			<header class="mdl-layout__header">
+			<div class="mdl-layout__header-row">
+				<div class="mdl-layout-spacer"></div>
+				<div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable
+							mdl-textfield--floating-label mdl-textfield--align-right">
+				<label class="mdl-button mdl-js-button mdl-button--icon"
+						 for="fixed-header-drawer-exp">
+					<div class="svg-ic_search_24px svg-ic_search_24px-dims"></div>
+				</label>
+				<div class="mdl-textfield__expandable-holder">
+					<input class="mdl-textfield__input" type="text" name="sample"
+							  id="fixed-header-drawer-exp">
+				</div>
+			</div>
+			</div>
+			</header>
+			<div class="mdl-layout__drawer">
+			<span class="mdl-layout-title">ToDoDuck</span>
+			<span class="mdl-layout-title user-text">Welcome, <span id="username">User</span>.</span>
+			<nav id="options" class="mdl-navigation">
+				<a class="mdl-navigation__link" href="index.html">Log Out</a>
+			</nav>
+			<nav id="macro-control" class="mdl-navigation">
+				<span class="mdl-navigation__link" id="show-all">All</span>
+				<span class="mdl-navigation__link" id="show-completed">Completed</span>
+			</nav>
+			<nav id="category-list" class="mdl-navigation">
+				<span class="mdl-navigation__link" id="cat-work">Work</span>
+				<span class="mdl-navigation__link" id="cat-studies">Studies</span>
+				<span class="mdl-navigation__link" id="cat-hobbies">Hobbies</span>
+				<span class="mdl-navigation__link" id="cat-chores">Chores</span>
+				<span class="mdl-navigation__link" id="cat-recreation">Recreation</span>
+				<span class="mdl-navigation__link" id="cat-free">Free time</span>
+			</nav>
+			</div>
+			<main class="mdl-layout__content">
+			<div class="page-content">
+				<!-- Task prototypes -->
+				<div id="empty-task" class="card-task mdl-card mdl-shadow--2dp">
+					<div class="mdl-card__title mdl-card--expand task-content"></div>
+					<div class="mdl-card__actions mdl-card--border">
+						<div class="urgency-holder"></div>
+						<p>
+							<div class="svg-ic_warning_24px svg-ic_warning_24px-dims date-warning"></div>
+							<div class="date-holder"></div>
+						</p>
+						
+						<div class="mdl-layout-spacer"></div>
+						
+						<a id="maps-link" href="" target="_blank" class="mdl-button mdl-js-button mdl-button--icon">
+							<div class="svg-ic_place_24px svg-ic_place_24px-dims"></div>
+						</a>
+						<label id="editor-link" class="mdl-button mdl-js-button mdl-button--icon">
+							<div class="svg-ic_settings_24px svg-ic_settings_24px-dims"></div>
+						</label>
+						<label id="remove-link" class="mdl-button mdl-js-button mdl-button--icon">
+							<div class="svg-ic_close_24px svg-ic_close_24px-dims"></div>
+						</label>
+						<label id="complete-link" class="mdl-button mdl-js-button mdl-button--icon">
+							<div class="svg-ic_done_24px svg-ic_done_24px-dims"></div>
+						</label>
+					</div>
+				</div>
+				<div id="completed-task" class="card-task mdl-card mdl-shadow--2dp">
+					<div class="mdl-card__title mdl-card--expand task-content"></div>
+					<div class="mdl-card__actions mdl-card--border">
+						<div class="urgency-holder"></div>
+						<div class="date-holder"></div>
+						
+						<div class="mdl-layout-spacer"></div>
+						
+						<label id="remove-link" class="mdl-button mdl-js-button mdl-button--icon">
+							<div class="svg-ic_close_24px svg-ic_close_24px-dims"></div>
+						</label>
+						<label id="complete-link" class="mdl-button mdl-js-button mdl-button--icon">
+							<div class="svg-ic_check_circle_24px svg-ic_check_circle_24px-dims"></div>
+						</label>
+					</div>
+				</div>
+				<!-- Task list -->
+				<div id=task-list>
+				</div>
+				<!-- FAB for adding tasks -->
+				<button id="add-task" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored mdl-shadow--4dp">
+					<div class="svg-ic_add_24px svg-ic_add_24px-dims"></div>
+				</button>
+			</div>
+			</main>
+		</div>
+		<!-- task editor -->
+		<div id="task-editor-overlay" class=""></div>
+		<div id="task-editor" class="mdl-card mdl-shadow--8dp">
+			<div class="mdl-card__title">
+				<h6 class="mdl-card__title-text">Edit Task</h6>
+				<div class="mdl-layout-spacer"></div>
+				<label id="close-editor" class="mdl-button mdl-js-button mdl-button--icon">
+					<div class="svg-ic_close_24px svg-ic_close_24px-dims"></div>
+				</label>
+			</div>
+			<div id=editing-index></div>
+			<div class="mdl-card__supporting-text mdl-card--expand">
+				<div class="mdl-textfield mdl-js-textfield task-text-holder">
+					<textarea class="mdl-textfield__input" type="text" rows= "3" id="task-text" ></textarea>
+					<label class="mdl-textfield__label" for="task-text">Task text...</label>
+				</div>
+				
+				<div class="mdl-textfield mdl-js-textfield deadline-holder">
+					<input class="mdl-textfield__input" type="text" pattern="(\d{1,2})\/(\d{1,2})\/(\d{4})" id="deadline">
+					<label class="mdl-textfield__label" for="deadline">Deadline...</label>
+					<span class="mdl-textfield__error">Format: DD/MM/YYYY</span>
+				</div>
+				
+				<div class="mdl-textfield mdl-js-textfield place-holder">
+					<input class="mdl-textfield__input" type="text" id="place">
+					<label class="mdl-textfield__label" for="place">Place...</label>
+				</div>
+				
+				Task priority:
+				<input id="priority-slider" class="mdl-slider mdl-js-slider" type="range" min="1" max="8" value="3" tabindex="0">
+				
+			</div>
+			<div class="mdl-card__actions mdl-card--border">
+				<button id="category-button" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+					Pick a category
+				</button>
+
+				<ul class="mdl-menu mdl-menu--top-left mdl-js-menu mdl-js-ripple-effect" for="category-button">
+					<li class="mdl-menu__item" id="menu-work">Work</li>
+					<li class="mdl-menu__item" id="menu-studies">Studies</li>
+					<li class="mdl-menu__item" id="menu-hobbies">Hobbies</li>
+					<li class="mdl-menu__item" id="menu-chores">Chores</li>
+					<li class="mdl-menu__item" id="menu-recreation">Recreation</li>
+					<li class="mdl-menu__item" id="menu-free">Free time</li>
+				</ul>
+				<div class="mdl-layout-spacer"></div>
+				<a id="done-editing" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+					Done
+				</a>
+			</div>
+		</div>
+	</body>
+</html>
