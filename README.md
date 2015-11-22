@@ -1,2 +1,2 @@
 # todo
-temporary Hosting repo for ToDoDuck
+Temporary hosting repo for ToDoDuck
